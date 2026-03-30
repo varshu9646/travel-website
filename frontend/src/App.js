@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
    fetch('https://travel-website-backend-x127.onrender.com/api/destinations')
       .then(res => res.json())
-      .then(setDestinations)
+      .then(data => setDestinations(data))
       .catch(err => console.error("Fetch error:", err));
   }, []);
 

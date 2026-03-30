@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import FeedbackForm from "./FeedbackForm";
 
 function App() {
   const [destinations, setDestinations] = useState([]);
@@ -39,6 +40,7 @@ function App() {
         <textarea placeholder="Your feedback"></textarea>
         <button>Submit</button>
       </section>
+      <FeedbackForm />
     </div>
   );
 }

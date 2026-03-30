@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import FeedbackForm from "./FeedbackForm";
+import { db } from './firebase';
 
 function App() {
   const [destinations, setDestinations] = useState([]);

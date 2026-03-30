@@ -5,7 +5,7 @@ function App() {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/destinations")
+   fetch('https://travel-website-backend-x127.onrender.com/api/destinations')
       .then(res => res.json())
       .then(setDestinations)
       .catch(err => console.error("Fetch error:", err));

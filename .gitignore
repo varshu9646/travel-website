@@ -1,0 +1,9 @@
+node_modules/
+*.log
+.env
+firebase-key.json
+frontend/build/
+backend/build/
+.DS_Store
+Thumbs.db
+.vscode/

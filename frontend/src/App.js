@@ -31,19 +31,13 @@ function App() {
             </div>
           ))}
         </div>
-      </section>
-    
-      {/* CONTACT */}
-      <section className="contact">
-        <h2>Feedback</h2>
-        <input placeholder="Name" />
-        <input placeholder="Mobile Number" />
-        <textarea placeholder="Your feedback"></textarea>
-        <button>Submit</button>
-      </section>
-      <FeedbackForm />
-    </div>
-  );
+    </section>
+
+    {/* CONTACT */}
+    <FeedbackForm />
+
+  </div>
+);
 }
 
 export default App;

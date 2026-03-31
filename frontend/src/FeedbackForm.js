@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { db } from "./firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import React, { useState } from 'react';
+import { db } from './firebase'; 
+import { collection, addDoc } from "firebase/firestore";
 
 function FeedbackForm() {
   const [name, setName] = useState("");
@@ -8,26 +8,25 @@ function FeedbackForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      await addDoc(collection(db, "feedbacks"), {
-        name,
-        message,
-        createdAt: serverTimestamp()
+      // This part sends the data to your Firebase Firestore
+      await addDoc(collection(db, "messages"), {
+        name: name,
+        feedback: message,
+        timestamp: new Date()
       });
-
-      alert("Feedback submitted 😄");
+      alert("Feedback submitted successfully!");
       setName("");
       setMessage("");
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error adding document: ", error);
+      alert("Error submitting feedback. Check your Firebase Rules.");
     }
   };
 
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div style={{ marginTop: "40px", textAlign: "center" }}>
       <h2>Give Feedback</h2>
-
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -35,20 +34,27 @@ function FeedbackForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          style={{ padding: "10px", width: "250px", marginBottom: "10px" }}
         />
-
-        <br /><br />
-
+        <br />
         <textarea
           placeholder="Your Feedback"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
+          style={{ padding: "10px", width: "250px", height: "100px" }}
         />
-
         <br /><br />
-
-        <button type="submit">Submit</button>
+        <button type="submit" style={{
+          padding: '10px 20px',
+          backgroundColor: '#007bff',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}>
+          Submit Feedback
+        </button>
       </form>
     </div>
   );
